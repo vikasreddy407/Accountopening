@@ -31,6 +31,7 @@ import { MenuComponent } from './menu/menu.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTabsModule} from '@angular/material/tabs';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatButtonModule,
     MatTableModule,
     MatPaginatorModule,
-    MatTabsModule 
+    MatTabsModule,
+    ToastrModule.forRoot() 
      
   ],
   providers: [],
