@@ -51,7 +51,7 @@ this.users.forEach(user => {
   console.log(user.email);
   console.log(user.firstName);
 });
-// console.log(this.users.id);
+
 });
 }
 
