@@ -6,33 +6,42 @@
      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
 <div> 
     <div style="text-align:center;">
-    <label > New Request </label></div> 
+    <label > New Account Opening Request </label></div> 
     <p></p>
     
-<div class="from-group" >
+<div class="from-group">
     <label for="name">Name:</label>
     <input class="form-control " #id="ngModel" name="name" cam-variable-type="String" cam-variable-name="name" type="text" required [(ngModel)]= "account.name">
-    <div></div>
+    <div class="from-group" *ngIf="id.invalid && id.touched" class="alert alert-danger">Sorry Name must be Entered
+    </div>
 </div>
 <br>
-<div class="from-group" >
+<div class="from-group">
     <label for="address">Address:</label >
-    <input class="form-control " name="address" cam-variable-type="String" cam-variable-name="address" type="text" required [(ngModel)]= "account.address">
-</div>
+      <input class="form-control " #ab="ngModel" name="address" cam-variable-type="String" cam-variable-name="address" type="text" required [(ngModel)]= "account.address">
+      <div class="from-group" *ngIf="ab.invalid && ab.touched" class="alert alert-danger">Sorry Address must be Entered
+    </div>
+    </div>
 <br>
-<div class="from-group" >
+<div class="from-group">
     <label for="age">Age:</label >
-    <input class="form-control " name="age" cam-variable-type="String" cam-variable-name="age" type="number" required [(ngModel)]= "account.age">
+    <input class="form-control " #bc="ngModel" name="age" cam-variable-type="String" cam-variable-name="age" type="number" required [(ngModel)]= "account.age">
+    <div class="from-group" *ngIf="bc.invalid && bc.touched" class="alert alert-danger">Sorry age must be Entered
+    </div>
 </div>
 <br>
-<div class="from-group" >
+<div class="from-group">
     <label for="email">Email:</label >
-    <input class="form-control " name="email" cam-variable-type="String" cam-variable-name="email" type="text" required [(ngModel)]= "account.email">
+    <input class="form-control" #cd="ngModel" name="email" cam-variable-type="String" cam-variable-name="email" type="text" required [(ngModel)]= "account.email">
+    <div class="from-group" *ngIf="cd.invalid && cd.touched" class="alert alert-danger">Sorry Email must be Entered
+    </div>
 </div>
 <br>
-<div class="from-group" >
+<div class="from-group">
     <label for="salary">Salary:</label >
-    <input class="form-control " name="salary" cam-variable-type="String" cam-variable-name="salary" type="text" required [(ngModel)]= "account.salary">
+    <input class="form-control " #de="ngModel" name="salary" cam-variable-type="String" cam-variable-name="salary" type="text" required [(ngModel)]= "account.salary">
+    <div class="from-group" *ngIf="de.invalid && de.touched" class="alert alert-danger">Sorry Salary must be Entered
+    </div>
 </div>
 <p></p>
 <div style="text-align:center;">
