@@ -37,6 +37,7 @@ completedDataSource:any=[];
 
 ngOnInit(): void {
   this.getTasks();
+ 
 }
 
 
@@ -77,6 +78,7 @@ getTasks():void{
       this.isPresent = true;
       }
     });
+   
     }
   )
 }

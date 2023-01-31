@@ -5,7 +5,7 @@
   <div class="col-4">
     <label > Select User</label>
   </div>
-  <div class="col-8">
+  <div class="col-6">
    <select [(ngModel)]="selectedUserEmail" (change)="onUserSelectionChange($event)" class=" col-5 form-control form-control-sm">
     <option>Select User</option>
     <option *ngFor="let user of users"  [value]="user.email">{{user.firstName}} {{user.lastName}} ({{user.email}})</option>
@@ -15,9 +15,7 @@
   </div>
    <br>
   <div class="button-row">
-    <button mat-raised-button (click)="assignTask()">Assign</button>&nbsp;
+    <button mat-raised-button (click)="assignTask()" routerLink="/tasklist" >Assign</button>&nbsp;
     <button mat-raised-button (click)="closeDialog()">Cancel</button>
   </div>
 
-  <!-- [value]="user.email" -->
-  <!-- -->

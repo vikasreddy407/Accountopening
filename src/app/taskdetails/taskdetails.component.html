@@ -11,7 +11,7 @@
          <br>
          <div class="row" *ngIf="tasks.assignee==null">
           <div class="content">
-            <button class="btn btn-primary btn-sm" (click)="approveTask(tasks.id,tasks.name)" >Assign</button>&nbsp;
+            <button class="btn btn-primary btn-sm" (click)="openDialog(tasks.id)">Assign</button>&nbsp;
           </div>
      </div>
 

@@ -24,13 +24,6 @@ export class NewformComponent implements OnInit {
 }
 }
 
-  //  let referenceNumber = Math.floor(Math.random() * 1000000);
-  //  this.router.navigate(['/confirm'],{queryParams: {referenceNumber: referenceNumber}});
-  // };
-  // cancel() {
-  //   this.account.clear();
-  // }
-    //  this.s.addAccount(this.account).subscribe((r)=>console.log(r))
-// } 
+
 
  

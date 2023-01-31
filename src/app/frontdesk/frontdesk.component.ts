@@ -41,11 +41,7 @@ export class FrontdeskComponent implements OnInit {
      this.utask ={...this.utask, ...form.value};
      this.update(this.utask).subscribe((data)=>{
       console.log(this.utask);
-     },({error})=>{
-      console.log(error)
-      const  { message } = JSON.parse(error)
-      this.showError("Something Went Wrong !!!")
-    });
+     });
    }
    updateSel(value:string){
     this.utask ={...this.utask, taskStatus:value}

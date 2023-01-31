@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DialogComponent } from '../dialog/dialog.component';
+import { ListdialogComponent } from '../listdialog/listdialog.component';
 import { Tasks } from '../tasklist/Tasks';
 import { comment } from './comment';
 import { Task } from './Task';
@@ -109,7 +110,7 @@ getcomments(){
           this.update(this.utask).subscribe((data)=>{
             console.log(data);
           });
-        }
+      }
       });
     }
   
@@ -132,61 +133,18 @@ getcomments(){
     update(utask : UTask | undefined){
       return this.http.put("http://localhost:8080/account/updateTaskStatus", utask,{responseType:'text'});
      }
-    
 
+     updateVariable(utask : UTask | undefined){
+      return this.http.put("http://localhost:8080/account/updateVariable", utask,{responseType:'text'});
+     }
+   
+     openDialog(taskId: string){
+      const dialogRef = this.dialog.open(ListdialogComponent, {
+        width: '40%',
+        height:'40%',
+        data:{taskId: taskId}
+      });
+    }
 }
   
-   
-
-
-// task:Task[]=[];
-//   constructor(private taskService: TaskserviceService,private h:HttpClient) { }
-
-//   ngOnInit(): void {
-//   }
-//   getAllTasks():Observable<any>
-//   {
-    
-//     //using camunda api
-//       return this.h.get("http://localhost:8080/engine-rest/task/449610a5-9269-11ed-9602-c42360f74eb0/variables");
-//     //using java api
-//     //  return this.h.get("http://localhost:8080/account/tasks");
-//     }
-// claimTask(taskId:string, userId:string){
-//   this.taskService.claimTask(taskId, userId).subscribe(response => {
-//     console.log(response);
-//     // task has been claimed successfully
-//   });
-// }
-// }
-// ------
-
- //    details:Task[]=[];
-    
-  // ngOnInit(): void {
-
-  //   this.getAllTasks().subscribe(
-
-  //     (data)=>{this.details=data;console.log(JSON.stringify(data))}
-
-  //   )
-
-  // }
   
-  // getAllTasks():Observable<any>
-  // {
-  //   //using camunda api
-  //     return this.http.get("http://localhost:8080/engine-rest/task/449610a5-9269-11ed-9602-c42360f74eb0/variables");
-  //   }
- //  getTasks():void{
-  //   this.getAllTasks().subscribe(
-  //     (data)=>{this.tasks=data;console.log(JSON.stringify(data))}
-  //   )
-  // }
-  // getAllTasks():Observable<any>
-  // {
-  //   //using camunda api
-  //     return this.http.get("http://localhost:8080/engine-rest/task");
-  //   //using java api
-  //   //  return this.h.get("http://localhost:8080/account/tasks");
-  //   }
