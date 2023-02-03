@@ -1,9 +1,12 @@
 import { getLocaleTimeFormat } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AccountService } from '../account.service';
 import { DialogComponent } from '../dialog/dialog.component';
 import { ListdialogComponent } from '../listdialog/listdialog.component';
 import { Tasks } from '../tasklist/Tasks';
@@ -21,6 +24,7 @@ import { UTask } from './UTask';
 })
 export class TaskdetailsComponent implements OnInit {
   constructor(
+    private s:AccountService,
     private http: HttpClient,
     public router: Router,
     public activatedRoute:ActivatedRoute,
@@ -28,11 +32,12 @@ export class TaskdetailsComponent implements OnInit {
   ) { }
 
     comments:comment[]=[];
-     tasks:Taskdetails; 
+     tasks:Taskdetails;
      task:Task;
      msg:string;
      commentMessage:string;
      utask: UTask;
+      taskss:Tasks[]=[];
 
     ngOnInit(): void {
      this.activatedRoute.params.subscribe(({taskid}) => { 
@@ -41,7 +46,7 @@ export class TaskdetailsComponent implements OnInit {
           (data)=>{this.task=data;console.log(JSON.stringify(data))
           console.log(this.task) }
         )
-      })
+      });
     }
     getAllVariables(id:string): Observable<any>{
          return this.http.get("http://localhost:8080/engine-rest/task/"+id+"/variables",);
@@ -98,52 +103,28 @@ getcomments(){
       return this.http.get("http://localhost:8080/engine-rest/task/"+id+"/comment");
     }
 
-    approveTask(taskId: string, taskName: string){
+     openTaskDialog(taskId: string, taskName: string, action: string) {
       const dialogRef = this.dialog.open(DialogComponent, {
-        width: '350px',
-        data: { action: "Approve", taskId: taskId, taskName: taskName }
+          width: '350px',
+          data: { taskId: taskId, taskName: taskName, action: action }
       });
   
-      dialogRef.afterClosed().subscribe(result => {
-        if(result) {
-          this.utask ={...this.utask, taskStatus:"Approved", taskId: taskId, taskName: taskName};
-          this.update(this.utask).subscribe((data)=>{
-            console.log(data);
-          });
-      }
-      });
-    }
-  
-    rejectTask(taskId: string, taskName: string){
-      const dialogRef = this.dialog.open(DialogComponent, {
-        width: '350px',
-        data:  { action: "Reject", taskId: taskId, taskName: taskName }
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        if(result) {
-          this.utask ={...this.utask, taskStatus:"Rejected" , taskId: taskId, taskName: taskName};
-          this.update(this.utask).subscribe((data)=>{
-            console.log(data);
-          });
-        }
-      });
-    }
+      dialogRef.afterClosed().subscribe(result =>
+        {
+          this.s.notifyTaskChanged();
+        })
+  }
 
-    update(utask : UTask | undefined){
-      return this.http.put("http://localhost:8080/account/updateTaskStatus", utask,{responseType:'text'});
-     }
-
-     updateVariable(utask : UTask | undefined){
-      return this.http.put("http://localhost:8080/account/updateVariable", utask,{responseType:'text'});
-     }
-   
      openDialog(taskId: string){
       const dialogRef = this.dialog.open(ListdialogComponent, {
         width: '40%',
         height:'40%',
         data:{taskId: taskId}
       });
+      dialogRef.afterClosed().subscribe(result =>
+        {
+          this.s.notifyTaskChanged();
+        })
     }
 }
   

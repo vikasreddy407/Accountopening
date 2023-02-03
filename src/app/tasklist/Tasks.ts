@@ -3,4 +3,5 @@ export class Tasks{
     name:string;
     created:string; 
     assignee:string;
+    due:string;
 }

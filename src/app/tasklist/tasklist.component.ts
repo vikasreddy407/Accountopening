@@ -10,6 +10,7 @@ import { User } from '../listdialog/User';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatTabChangeEvent } from '@angular/material/tabs';
+import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-tasklist',
@@ -20,12 +21,12 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
 export class TasklistComponent implements OnInit {
 
   
-  constructor(private h:HttpClient,public activatedRoute:ActivatedRoute,public dialog: MatDialog) { 
+  constructor(private s:AccountService,private h:HttpClient,public activatedRoute:ActivatedRoute,public dialog: MatDialog) { 
 }
 
 tasks:Tasks[]=[];
 msg:string;
-displayedColumns: string[] = ['id', 'name', 'created', 'action'];
+displayedColumns: string[] = ['id', 'name', 'created','dueDate','action'];
 dataSource : any=[];
 assignedDisplayedColumns:string[]=['id','name','created','assigned']
 assignedDataSource:any=[];
@@ -36,8 +37,10 @@ completedDataSource:any=[];
 
 
 ngOnInit(): void {
+  this.s.taskChanged$.subscribe(() => {
+    this.getTasks();
+  });
   this.getTasks();
- 
 }
 
 
@@ -58,7 +61,7 @@ onTabChange(event: MatTabChangeEvent) {
 isPresent:boolean = false; 
 
 getTasks():void{
-
+this.tasks=[];
  let assignedTask:any[]=[];
  let unAssignedTask:any[]=[];
   this.getAllTasks().subscribe(
@@ -96,6 +99,10 @@ getAllTasks():Observable<any>
       height:'40%',
       data:{taskId: taskId}
     });
+    dialogRef.afterClosed().subscribe(result =>
+      {
+        this.getTasks();
+      })
   }
 
   finishedTaskList:any;

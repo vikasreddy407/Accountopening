@@ -17,17 +17,18 @@
 
         <div class="row" *ngIf="tasks.assignee">
           <div class="content">
-            <button class="btn btn-primary btn-sm" (click)="approveTask(tasks.id,tasks.name)" >Approve</button>&nbsp;
+            <button class="btn btn-primary btn-sm" (click)="openTaskDialog(tasks.id, tasks.name, 'Approve')">Approve</button>&nbsp;
+            <!-- <button class="btn btn-primary btn-sm" (click)="approveTask(tasks.id,tasks.name)" >Approve</button>&nbsp; -->
             <button class="btn btn-primary btn-sm" >On-Hold</button>&nbsp;
-            <button class="btn btn-primary btn-sm" (click)="rejectTask(tasks.id,tasks.name)" >Reject</button>&nbsp;
+            <button class="btn btn-primary btn-sm" (click)="openTaskDialog(tasks.id, tasks.name, 'Reject')">Reject</button>&nbsp;
+            <!-- <button class="btn btn-primary btn-sm" (click)="rejectTask(tasks.id,tasks.name)" >Reject</button>&nbsp; -->
             <button class="btn btn-primary btn-sm" >Complete</button>&nbsp;
           </div>
      </div>
-      
-   
+
         <hr>
-        <div>
-          <mat-card>
+        <div >
+          
           <div class="row" *ngIf="tasks.assignee">
             <div class="col-2"><span>Assignee:</span></div>
             <div class="col-6"><span>{{ tasks.assignee }}</span></div>
@@ -44,7 +45,7 @@
                 <div class="col-2"><span>Created on:</span></div>
                 <div class="col-6"><span>{{ tasks.created | date:'medium'}}</span></div>
                 </div>
-              </mat-card>
+          
         </div>
         
         <hr>
@@ -73,7 +74,7 @@
         </div>
         <div class="row">
           <div class="col-2"><span>Comment:</span></div>
-           <div class="col-6"><textarea [(ngModel)]="commentMessage" name="comment"></textarea></div>
+           <div class="col-6"><textarea id="myTextArea" [(ngModel)]="commentMessage" name="comment"></textarea></div>
           <div> <button type="button" class="btn btn-primary btn-sm" (click)="sendComment();getcomments();">Add Comment</button>&nbsp;
           <!-- <button type="button" class="btn btn-info" routerLink="/frontdesk/{{tasks.id}}"> Front Desk</button> -->
           <div id="SectionName" style="display:none">

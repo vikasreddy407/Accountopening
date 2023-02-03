@@ -17,8 +17,7 @@ export class ListdialogComponent {
 
 users:any=[];
 selectedUser : any;
-msg:string;
-// tasks:Taskdetails; 
+msg:string; 
 tasks:Tasks
 taskId: string;
 constructor(

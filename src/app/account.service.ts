@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Account } from './Account';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { Tasks } from './tasklist/Tasks';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
+
   account:Account[]=[];
   // url:string="http://localhost:8080"
   constructor(private h:HttpClient) { }
@@ -16,5 +18,13 @@ export class AccountService {
   }
   getReferenceNo(referenceNo:string) {
     return this.h.get(`http://localhost:8080/process-instance/${referenceNo}`);
+  }
+
+  private taskChanged = new Subject<void>();
+
+  taskChanged$ = this.taskChanged.asObservable();
+
+  notifyTaskChanged() {
+    this.taskChanged.next();
   }
 }
