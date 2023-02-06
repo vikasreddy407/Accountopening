@@ -6,7 +6,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AccountService } from '../account.service';
+import { AccountService } from 'src/app/account.service';
+
 import { DialogComponent } from '../dialog/dialog.component';
 import { ListdialogComponent } from '../listdialog/listdialog.component';
 import { Tasks } from '../tasklist/Tasks';

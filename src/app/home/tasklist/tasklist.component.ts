@@ -10,7 +10,8 @@ import { User } from '../listdialog/User';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatTabChangeEvent } from '@angular/material/tabs';
-import { AccountService } from '../account.service';
+import { AccountService } from 'src/app/account.service';
+
 
 @Component({
   selector: 'app-tasklist',
