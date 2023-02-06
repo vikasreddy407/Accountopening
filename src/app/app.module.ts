@@ -32,6 +32,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ToastrModule } from 'ngx-toastr';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ToastrModule } from 'ngx-toastr';
     DialogComponent,
     ListdialogComponent,
     HeaderComponent,
-    MenuComponent
+    MenuComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

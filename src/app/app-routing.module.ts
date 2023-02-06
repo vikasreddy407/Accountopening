@@ -8,6 +8,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { FrontdeskComponent } from './frontdesk/frontdesk.component';
 import { HomeComponent } from './home/home.component';
 import { ListdialogComponent } from './listdialog/listdialog.component';
+import { LoginComponent } from './login/login.component';
 import { NewformComponent } from './newform/newform.component';
 import { TaskdetailsComponent } from './taskdetails/taskdetails.component';
 import { TasklistComponent } from './tasklist/tasklist.component';
@@ -23,7 +24,9 @@ const routes: Routes = [
 {path:'update/:taskid',component:UpdateComponent},
 {path:'frontdesk/:taskid',component:FrontdeskComponent},
 {path:'dialog',component:DialogComponent},
-{path:'listdialog/:taskid',component:ListdialogComponent}
+{path:'listdialog/:taskid',component:ListdialogComponent},
+{path:'',component:LoginComponent},
+{path:'login',component:LoginComponent}
 ];
 
 @NgModule({

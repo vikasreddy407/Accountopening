@@ -24,7 +24,7 @@
      
           <ng-container matColumnDef="dueDate">
             <th mat-header-cell *matHeaderCellDef> Due Date </th>
-            <td mat-cell *matCellDef="let task"> {{ task.due | date:'medium'}} </td>
+            <td mat-cell *matCellDef="let task" > {{ task.due | date:'medium'}} </td>
            </ng-container>
 
          <ng-container matColumnDef="action">

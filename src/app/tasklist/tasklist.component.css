@@ -9,4 +9,6 @@ th{
 td{
   font-size: x-small;
 }
-   
+.past-due {
+  color: red;
+}

@@ -24,7 +24,7 @@ export class TasklistComponent implements OnInit {
   constructor(private s:AccountService,private h:HttpClient,public activatedRoute:ActivatedRoute,public dialog: MatDialog) { 
 }
 
-tasks:Tasks[]=[];
+tasks:Tasks[]=[]; 
 msg:string;
 displayedColumns: string[] = ['id', 'name', 'created','dueDate','action'];
 dataSource : any=[];
@@ -123,6 +123,11 @@ getAllTasks():Observable<any>
     return this.h.get('http://localhost:8080/engine-rest/history/task?finished=true');
 }
 
+// dueDate: Date = new Date('2023-02-06T11:01:13');
+// [ngClass]="{'past-due': isPastDue(dueDate)}"
+//   isPastDue(dueDate: Date): boolean {
+//     return dueDate.getTime() < new Date().getTime();
+//   }
      
 }
 
