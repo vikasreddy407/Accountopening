@@ -21,7 +21,8 @@ import { TaskdetailsComponent } from './taskdetails/taskdetails.component';
 import { TasklistComponent } from './tasklist/tasklist.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { ListdialogComponent } from './listdialog/listdialog.component';
-import { MenuComponent } from './menu/menu.component';
+// import { MenuComponent } from './menu/menu.component';
+import { WorkitemsComponent } from './workitems/workitems.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MenuComponent } from './menu/menu.component';
     TaskdetailsComponent,
     DialogComponent,
     ListdialogComponent,
-    MenuComponent
+    // MenuComponent,
+    WorkitemsComponent
   ],
   imports: [
     CommonModule,

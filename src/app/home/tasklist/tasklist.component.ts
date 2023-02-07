@@ -2,15 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Tasks } from './Tasks';
-import { DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ListdialogComponent } from '../listdialog/listdialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { User } from '../listdialog/User';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { AccountService } from 'src/app/account.service';
+
 
 
 @Component({
@@ -35,7 +34,6 @@ completedDisplayedColumns:string[]=['id','name','created','assigned']
 completedDataSource:any=[];
 
 @ViewChild(MatPaginator) paginator: MatPaginator;
-
 
 ngOnInit(): void {
   this.s.taskChanged$.subscribe(() => {

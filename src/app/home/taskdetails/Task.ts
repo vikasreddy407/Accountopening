@@ -4,5 +4,4 @@ export class Task {
     age: {value:string};
     email:{value:string};
     salary:{value:string};
-    // commentMessage:string;
 }

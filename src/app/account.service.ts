@@ -10,7 +10,6 @@ import { Observable, Subject } from 'rxjs';
 export class AccountService {
 
   account:Account[]=[];
-  // url:string="http://localhost:8080"
   constructor(private h:HttpClient) { }
   addAccount(account:Account):Observable<any>
   {

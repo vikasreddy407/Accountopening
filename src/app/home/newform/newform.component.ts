@@ -20,7 +20,7 @@ export class NewformComponent implements OnInit {
   addAccount():void{  
     this.s.addAccount(this.account).subscribe((data: any) => {
     this.referenceNo = data.referenceNo;
-    this.router.navigate(['/confirm', this.referenceNo]);
+    this.router.navigate(['/home/confirm', this.referenceNo]);
   });
 }
 }

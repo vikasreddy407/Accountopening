@@ -1,9 +1,6 @@
-import { getLocaleTimeFormat } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component,  OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AccountService } from 'src/app/account.service';
@@ -34,11 +31,10 @@ export class TaskdetailsComponent implements OnInit {
 
     comments:comment[]=[];
      tasks:Taskdetails;
-     task:Task;
+    task:Task;
      msg:string;
      commentMessage:string;
      utask: UTask;
-      taskss:Tasks[]=[];
 
     ngOnInit(): void {
      this.activatedRoute.params.subscribe(({taskid}) => { 
@@ -73,7 +69,6 @@ export class TaskdetailsComponent implements OnInit {
  
    getTaskbyId(id:string): Observable<any>{
     return this.http.get("http://localhost:8080/engine-rest/task/"+id);
-
    }
 
    sendComment(){
@@ -112,7 +107,7 @@ getcomments(){
   
       dialogRef.afterClosed().subscribe(result =>
         {
-          this.s.notifyTaskChanged();
+          this.router.navigate(['/home/tasklist']);
         })
   }
 
@@ -124,7 +119,7 @@ getcomments(){
       });
       dialogRef.afterClosed().subscribe(result =>
         {
-          this.s.notifyTaskChanged();
+          this.router.navigate(['/home/tasklist']);
         })
     }
 }

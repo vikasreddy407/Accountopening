@@ -8,6 +8,7 @@ import { ConfirmComponent } from './confirm/confirm.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { HomeComponent } from './home.component';
 import { ListdialogComponent } from './listdialog/listdialog.component';
+import { WorkitemsComponent } from './workitems/workitems.component';
 
 const childRoutes: Routes = [
   {path:'home',component:HomeComponent,
@@ -18,6 +19,7 @@ const childRoutes: Routes = [
     { path: 'taskdetails/:taskid', component: TaskdetailsComponent },
     {path:'dialog',component:DialogComponent},
     {path:'listdialog/:taskid',component:ListdialogComponent},
+    {path:'workitems',component:WorkitemsComponent}
   ]}
 ];
 

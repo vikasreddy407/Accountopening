@@ -50,9 +50,6 @@ confirmAction(taskId: string, taskName: string, action: string) {
     } else if (action === "Reject") {
         this.rejectTask(taskId, taskName);
     }
-
-    this.dialogRef.close(true);
-    
+    this.dialogRef.close(true);   
 }
-
 }
