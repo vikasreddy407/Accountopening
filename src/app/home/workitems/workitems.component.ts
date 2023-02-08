@@ -32,7 +32,6 @@ export class WorkitemsComponent {
   {}
 
 ngOnInit(): void {
-  let assignedTask:any[]=[];
   this.subscription = this.sharedDataService.getEmail().subscribe((data) => {
     this.email = data;
     this.getTasksByAssignee().subscribe((data) => {

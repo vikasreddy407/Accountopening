@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Account';
   
+  constructor() { }
+  ngOnInit()
+  {
+     window.addEventListener('unload', (event) =>
+      { 
+        localStorage.removeItem('username');
+      });
+    }
 }

@@ -12,7 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ToastrModule } from 'ngx-toastr';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home.component';
 import { ConfirmComponent } from './confirm/confirm.component';
@@ -23,6 +23,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { ListdialogComponent } from './listdialog/listdialog.component';
 // import { MenuComponent } from './menu/menu.component';
 import { WorkitemsComponent } from './workitems/workitems.component';
+import { MyInterceptorInterceptor } from '../my-interceptor.interceptor';
 
 
 @NgModule({

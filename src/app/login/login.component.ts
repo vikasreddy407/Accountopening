@@ -33,6 +33,7 @@ export class LoginComponent {
             console.log(data);
             this.sharedDataService.setEmail(data['email']);
             this.sharedDataService.setData(data['firstName']+" "+data['lastName']);
+            localStorage.setItem('username', data['firstName']);
           });
           this.loginService.fetchGroups(this.username).subscribe((data) => {
             console.log(data);
