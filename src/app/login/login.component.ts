@@ -12,6 +12,7 @@ import { SharedDataService } from '../shared-data.service';
 export class LoginComponent {
   username: string;
   password: string;
+  email: string;
 
   constructor(
     private loginService: LoginService,
@@ -30,7 +31,7 @@ export class LoginComponent {
           this.showSucess('Logging Sucessfull');
           this.loginService.fetchProfile(this.username).subscribe((data) => {
             console.log(data);
-            // this.sharedDataService.setData(this.username);
+            this.sharedDataService.setEmail(data['email']);
             this.sharedDataService.setData(data['firstName']+" "+data['lastName']);
           });
           this.loginService.fetchGroups(this.username).subscribe((data) => {

@@ -24,7 +24,7 @@ export class TasklistComponent implements OnInit {
   constructor(private s:AccountService,private h:HttpClient,public activatedRoute:ActivatedRoute,public dialog: MatDialog) { 
 }
 
-tasks:Tasks[]=[]; 
+ tasks:Tasks[]=[]; 
 msg:string;
 displayedColumns: string[] = ['id', 'name', 'created','dueDate','action'];
 dataSource : any=[];
@@ -60,7 +60,7 @@ onTabChange(event: MatTabChangeEvent) {
 isPresent:boolean = false; 
 
 getTasks():void{
-this.tasks=[];
+ this.tasks=[];
  let assignedTask:any[]=[];
  let unAssignedTask:any[]=[];
   this.getAllTasks().subscribe(
