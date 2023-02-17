@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -15,11 +16,16 @@ export class LoginComponent {
   email: string;
 
   constructor(
+    private http: HttpClient,
     private loginService: LoginService,
     private toastr: ToastrService,
     private sharedDataService: SharedDataService,
     private router:Router
   ) {}
+
+  ngOnInit(): void {
+    //  this.gettokennn(this.authRequest);
+  }
 
   login() {
     this.loginService.login(this.username, this.password).subscribe(
@@ -62,4 +68,21 @@ export class LoginComponent {
     this.username = '';
     this.password = '';
   }
+
+  // authRequest:any={
+  //   "userName":"vikas",
+  //   "password":"vikas"
+  // }
+  // // token: any;
+  // gettokennn(authRequest){
+  //   this.getToken(authRequest).subscribe(data => {
+  //     this.sharedDataService.setToken(data);
+  //     // this.token = data;
+  //      console.log(data);
+  //   })
+  // }
+  
+  // getToken(request){
+  //  return this.http.post("http://localhost:8080/account/authenticate",request,{responseType:'text' as 'json'});
+  // }
 }

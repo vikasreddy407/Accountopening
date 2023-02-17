@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { SharedDataService } from './shared-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private sharedDataService: SharedDataService) { }
 
   login(username: string, password: string) {
     const headers = new HttpHeaders({
@@ -28,4 +29,5 @@ export class LoginService {
   fetchGroups(userId:string){
     return this.http.get('http://localhost:8080/engine-rest/identity/groups?userId='+userId);
   }
+  
 }

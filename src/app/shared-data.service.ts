@@ -10,6 +10,7 @@ export class SharedDataService {
   constructor() { }
   private sharedData = new Subject<string>();
   private email = new Subject<string>();
+  private token = new Subject<any>();
 
   setData(data: string) {
     this.sharedData.next(data);
@@ -24,6 +25,15 @@ export class SharedDataService {
   }
   getEmail(){
     return this.email.asObservable();
+  }
+
+  setToken(token:any){
+    console.log("tokenn is being set")
+    this.token.next(token);
+    console.log(this.getEmail());
+  }
+  getToken(){
+    return this.token.asObservable();
   }
 
 }

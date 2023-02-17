@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { AccountService } from 'src/app/account.service';
+import { LoginService } from 'src/app/login.service';
 
 
 
@@ -21,7 +22,7 @@ import { AccountService } from 'src/app/account.service';
 export class TasklistComponent implements OnInit {
 
   
-  constructor(private s:AccountService,private h:HttpClient,public activatedRoute:ActivatedRoute,public dialog: MatDialog) { 
+  constructor(private s:AccountService,private h:HttpClient,public activatedRoute:ActivatedRoute,public dialog: MatDialog, private loginService: LoginService) { 
 }
 
  tasks:Tasks[]=[]; 
@@ -82,6 +83,7 @@ getTasks():void{
    
     }
   )
+ 
 }
 getAllTasks():Observable<any>
 {
