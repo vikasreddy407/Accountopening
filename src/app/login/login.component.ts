@@ -24,7 +24,7 @@ export class LoginComponent {
   ) {}
 
   ngOnInit(): void {
-    //  this.gettokennn(this.authRequest);
+     this.gettokennn(this.authRequest);
   }
 
   login() {
@@ -69,20 +69,20 @@ export class LoginComponent {
     this.password = '';
   }
 
-  // authRequest:any={
-  //   "userName":"vikas",
-  //   "password":"vikas"
-  // }
-  // // token: any;
-  // gettokennn(authRequest){
-  //   this.getToken(authRequest).subscribe(data => {
-  //     this.sharedDataService.setToken(data);
-  //     // this.token = data;
-  //      console.log(data);
-  //   })
-  // }
+  authRequest:any={
+    "userName":"vikas",
+    "password":"vikas"
+  }
+   token: any;
+  gettokennn(authRequest){
+    this.getToken(authRequest).subscribe(data => {
+      this.sharedDataService.setToken(data);
+      this.token = data;
+       console.log(data);
+    })
+  }
   
-  // getToken(request){
-  //  return this.http.post("http://localhost:8080/account/authenticate",request,{responseType:'text' as 'json'});
-  // }
+  getToken(request){
+   return this.http.post("http://localhost:8080/account/authenticate",request,{responseType:'text' as 'json'});
+  }
 }

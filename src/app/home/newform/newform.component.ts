@@ -15,16 +15,11 @@ export class NewformComponent implements OnInit {
   account:Account=new Account();
   referenceNo:string;
   
-  constructor(private s:AccountService,private router:Router,private sharedDataService: SharedDataService) { 
+  constructor(private s:AccountService,private router:Router) { 
   }
-  subscription: Subscription;
   ngOnInit():void{
   }
   addAccount():void{  
-    this.subscription = this.sharedDataService.getToken().subscribe((data) => {
-      console.log(data);
-      // this.token = data;
-      })
     this.s.addAccount(this.account).subscribe((data: any) => {
     this.referenceNo = data.referenceNo;
     this.router.navigate(['/home/confirm', this.referenceNo]);

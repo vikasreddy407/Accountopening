@@ -23,8 +23,8 @@ export class AccountService {
 //   Authorization: 'Basic ' + btoa(username+":"+password)})
     // let token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWthcyIsImV4cCI6MTY3NjY2MDgxOCwiaWF0IjoxNjc2NjI0ODE4fQ.o7xqfvYiYlSWKSLLpBGJWL85yQbsIBPPmSbZmNHUpYQ';
     this.subscription = this.sharedDataService.getToken().subscribe((data) => {
-    console.log(data);
     this.token = data;
+    console.log(this.token);
     })
     const headers = new HttpHeaders({
      Authorization: `Bearer ${this.token}`})

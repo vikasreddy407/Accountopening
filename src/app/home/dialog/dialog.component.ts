@@ -29,7 +29,7 @@ export class DialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.gettokennn(this.authRequest);
+      // this.gettokennn(this.authRequest);
   }
 
 
@@ -64,22 +64,22 @@ update(utask : UTask | undefined) {
     return this.http.put("http://localhost:8080/account/updateTaskStatus", utask,{headers,responseType:'text'});
 }
 
-authRequest:any={
-  "userName":"vikas",
-  "password":"vikas"
-}
+// authRequest:any={
+//   "userName":"vikas",
+//   "password":"vikas"
+// }
 
-gettokennn(authRequest){
-  this.getToken(authRequest).subscribe(data => {
-    // this.sharedDataService.setToken(data);
-    this.token = data;
-     console.log(data);
-  })
-}
+// gettokennn(authRequest){
+//   this.getToken(authRequest).subscribe(data => {
+//     this.sharedDataService.setToken(data);
+//     this.token = data;
+//      console.log(data);
+//   })
+// }
 
-getToken(request){
- return this.http.post("http://localhost:8080/account/authenticate",request,{responseType:'text' as 'json'});
-}
+// getToken(request){
+//  return this.http.post("http://localhost:8080/account/authenticate",request,{responseType:'text' as 'json'});
+// }
 
 
 confirmAction(taskId: string, taskName: string, action: string) {
