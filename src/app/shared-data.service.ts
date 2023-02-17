@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Tasks } from './home/tasklist/Tasks';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,12 @@ export class SharedDataService {
   getData() {
     return this.sharedData.asObservable();
   }
+
   setEmail(email:string){
     this.email.next(email);
   }
   getEmail(){
     return this.email.asObservable();
   }
+
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -41,12 +41,29 @@ rejectTask(taskId: string, taskName: string) {
 }
 
 update(utask : UTask | undefined) {
-    return this.http.put("http://localhost:8080/account/updateTaskStatus", utask,{responseType:'text'});
+     
+//   let username = 'vikas';
+//   let password = 'vikas';
+// const headers = new HttpHeaders({
+//   Authorization: 'Basic ' + btoa(username+":"+password)})
+   let token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2aWthcyIsImV4cCI6MTY3NjY0Nzc1OSwiaWF0IjoxNjc2NjExNzU5fQ.Z1uCk6XOUQS9_YRjtGOw_TRx7tRAEdQYXnJBebKbcqs';
+const headers = new HttpHeaders({
+  Authorization: `Bearer ${token}`})
+    return this.http.put("http://localhost:8080/account/updateTaskStatus", utask,{headers,responseType:'text'});
 }
+
+// getToken(){
+//   const headers = {
+//     'username': 'vikas',
+//     'password': 'vikas'
+//   };
+//  return this.http.post("http://localhost:8080/account/authenticate",{},{ headers })
+// }
+
 
 confirmAction(taskId: string, taskName: string, action: string) {
     if (action === "Approve") {
-        this.approveTask(taskId, taskName);
+        this.approveTask(taskId, taskName);    
     } else if (action === "Reject") {
         this.rejectTask(taskId, taskName);
     }

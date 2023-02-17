@@ -74,7 +74,7 @@ selectedUserEmail:string;
           }
         )
   }
-  assigneeObj : any ={};
+  assigneeObj : any ={}; 
   assign(id:string,assignee:string): Observable<any>{
      this.assigneeObj.userId=assignee;
      console.log(this.assigneeObj);

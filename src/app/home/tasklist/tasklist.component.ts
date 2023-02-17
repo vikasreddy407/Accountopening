@@ -58,7 +58,6 @@ onTabChange(event: MatTabChangeEvent) {
 }
 
 isPresent:boolean = false; 
-
 getTasks():void{
  this.tasks=[];
  let assignedTask:any[]=[];

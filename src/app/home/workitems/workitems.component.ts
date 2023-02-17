@@ -2,11 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { SharedDataService } from 'src/app/shared-data.service';
-import { Task } from '../taskdetails/Task';
-import { Taskdetails } from '../taskdetails/Taskdetails';
 import { Tasks } from '../tasklist/Tasks';
 import { userData } from './userData';
 
@@ -15,7 +13,7 @@ import { userData } from './userData';
   templateUrl: './workitems.component.html',
   styleUrls: ['./workitems.component.css']
 })
-export class WorkitemsComponent {
+export class WorkitemsComponent{
   
   displayedColumns:string[]=['id','name','created','assigned']
   dataSource:any=[];
@@ -32,8 +30,10 @@ export class WorkitemsComponent {
   {}
 
 ngOnInit(): void {
+  console.log('ngOnInit called');
   this.subscription = this.sharedDataService.getEmail().subscribe((data) => {
     this.email = data;
+    console.log(data);
     this.getTasksByAssignee().subscribe((data) => {
       this.tasks = data;
       console.log(data);
@@ -42,8 +42,6 @@ ngOnInit(): void {
     });
   });
 }
-
-
 getTasksByAssignee(): Observable<any> {
   return this.http.get(
     `http://localhost:8080/engine-rest/task?assignee=` + this.email
